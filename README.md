@@ -19,4 +19,4 @@ A repository where I solve **one LeetCode SQL problem every day** to stay consis
 ## 🤝 Connect with Me
 
 - 💼 [LinkedIn](https://www.linkedin.com/in/aeshwakachhadiya/)
-- 🧩 📖 [Problem Set](https://leetcode.com/studyplan/top-sql-50/)
+- 📖 [Problem Set](https://leetcode.com/studyplan/top-sql-50/)
