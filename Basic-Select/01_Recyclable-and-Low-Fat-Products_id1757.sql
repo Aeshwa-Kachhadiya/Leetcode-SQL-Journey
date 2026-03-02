@@ -1,0 +1,24 @@
+-- Problem ID: 1757
+-- Title: Recyclable and Low Fat Products
+-- Platform: LeetCode
+-- Difficulty: Easy
+--
+-- Problem Statement:
+-- Find the ids of products that are both low fat and recyclable.
+--
+-- A product is considered valid if:
+--   1) low_fats = 'Y'
+--   2) recyclable = 'Y'
+--
+-- Task:
+-- Return the product_id of products that satisfy both conditions.
+--
+-- Approach:
+-- - Use WHERE clause to filter rows
+-- - Apply AND condition to ensure both criteria are met
+-- - Select only the product_id column as required
+
+SELECT product_id
+FROM Products
+WHERE low_fats = 'Y'
+  AND recyclable = 'Y';
