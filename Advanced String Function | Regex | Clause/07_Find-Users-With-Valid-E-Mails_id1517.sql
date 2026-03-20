@@ -1,0 +1,51 @@
+-- Problem ID: 1517
+-- Title: Find Users With Valid E-Mails
+-- Platform: LeetCode
+-- Difficulty: Easy
+--
+-- Problem Statement:
+-- Find the users who have valid emails.
+-- A valid email has a prefix and domain where:
+-- - Prefix may contain letters, digits, underscore, period, and/or dash
+-- - Prefix must start with a letter
+-- - Domain must be exactly '@leetcode.com' (lowercase)
+--
+-- Table Description:
+-- Users
+-- | user_id | name | mail |
+--
+-- Note:
+-- - user_id is the primary key
+-- - Some emails in the table are invalid
+-- - Domain must be strictly lowercase '@leetcode.com'
+--
+-- Task Requirements:
+-- - Validate email prefix starts with a letter
+-- - Prefix can contain letters, digits, _ . -
+-- - Domain must be exactly @leetcode.com in lowercase
+-- - Return all columns of valid users
+--
+-- Approach:
+-- - Use REGEXP to validate the email format
+-- - Use (?-i) inline flag to enforce case sensitivity
+--   on the domain part only
+--
+-- Logic:
+-- - ^[A-Za-z]       → prefix must start with a letter
+-- - [A-Za-z0-9._-]* → rest of prefix can have letters, digits, _ . -
+-- - @               → literal @ symbol
+-- - (?-i)leetcode   → 'leetcode' must be exactly lowercase
+-- - [.]             → literal dot
+-- - (?-i)com$       → 'com' must be exactly lowercase at the end
+--
+-- Why (?-i)?
+-- - MySQL REGEXP is case insensitive by default
+-- - REGEXP BINARY causes charset errors on LeetCode
+-- - LOWER() normalizes before matching so uppercase slips through
+-- - (?-i) disables case insensitivity at that specific point
+--   keeping the original value intact for matching
+--
+-- SQL Solution:
+SELECT *
+FROM Users
+WHERE mail REGEXP '^[A-Za-z][A-Za-z0-9._-]*@(?-i)leetcode[.](?-i)com$';
